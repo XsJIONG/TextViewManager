@@ -12,6 +12,7 @@ public class MainActivity extends Activity
 	private TextView text;
 	private TextViewManager mTextViewManager;
 	public final String typeString="这是一个文字打印展示";
+	public final int none=Menu.NONE;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -26,17 +27,20 @@ public class MainActivity extends Activity
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
-		MenuInflater inflater=getMenuInflater();
-		inflater.inflate(R.menu.layout_menu, menu);
+		menu.add(none,none,1,"清空文字");
+		menu.add(none,none,2,"打印文字");
 		return true;
 	}
 
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item)
 	{
-		switch(item.getItemId()) {
-			case R.id.menutype:
-				mTextViewManager.typeText(typeString, 100, false);
+		switch(item.getTitle().toString()) {
+			case "清空文字":
+				mTextViewManager.clear();
+				break;
+			case "打印文字":
+				mTextViewManager.typeText(typeString, 100);
 				break;
 			default:
 				break;

@@ -10,23 +10,22 @@ public class TextViewManager
 	private TextView mTextView;
 	private String showText;
 	private int delayTime;
+	private boolean isinit;
 	
 	public void initTextView(Context context, TextView textview) {
 		mContext=context;
 		mTextView=textview;
+		isinit=true;
 	}
 	
-	public void clear() {
+	public void reset() {
 		mContext=null;
 		mTextView=null;
 	}
 	
-	public void typeText(String text, int time, boolean append) {
+	public void typeText(String text, int time) {
 		showText=text;
 		delayTime=time;
-		if(!append) {
-			mTextView.setText("");
-		}
 		TypeDelay();
 	}
 	
@@ -41,4 +40,15 @@ public class TextViewManager
 		}, delayTime);
 	}
 	
+	public void setText(String text) {
+		mTextView.setText(text);
+	}
+	
+	public void clear() {
+		mTextView.setText("");
+	}
+	
+	public boolean isInit() {
+		return isinit;
+	}
 }
