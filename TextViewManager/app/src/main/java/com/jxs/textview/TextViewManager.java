@@ -51,4 +51,12 @@ public class TextViewManager
 	public boolean isInit() {
 		return isinit;
 	}
+	
+	public void append(String text) {
+		mTextView.setText(mTextView.getText().toString()+text);
+	}
+	
+	public void next() {
+		mTextView.setText(mTextView.getText().toString()+"\n");
+	}
 }
